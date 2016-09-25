@@ -1,3 +1,34 @@
+<?php
+session_start();
+$tags = array('Inicio', '¿Quiénes somos?', 'Plan de desarrollo', 'Galeria',
+    'Productos', 'Contáctenos', 'Misión', 'Visión', 'Historia', 'Comisión',
+    'Leer más', 'Cerrar', 'Todos', 'I Etapa', 'II Etapa', 'Nuestros productos',
+    'Ver recetas', 'Estamos para servirles', 'Para cualquier consulta escríbenos, '
+    . 'nos gustaría saber de tí y de tus opiniones sobre APROASUR',
+    'Nombre', 'Correo', 'Número telefónico (opcional)', 'Mensaje', 'Enviar');
+if (!isset($_GET['lang'])) {
+    $_SESSION['lang'] = 'es';
+    $lang = 'es';
+} else {
+    $lang = $_GET['lang'];
+    $_SESSION['lang'] = $lang;
+    if ($lang == 'es') {
+        $tags = array('Inicio', '¿Quiénes somos?', 'Plan de desarrollo', 'Galeria',
+            'Productos', 'Contáctenos', 'Misión', 'Visión', 'Historia', 'Comisión',
+            'Leer más', 'Cerrar', 'Todos', 'I Etapa', 'II Etapa', 'Nuestros productos',
+            'Ver recetas', 'Estamos para servirles', 'Para cualquier consulta escríbenos, '
+            . 'nos gustaría saber de tí y de tus opiniones sobre APROASUR',
+            'Nombre', 'Correo', 'Número telefónico', 'Mensaje', 'Enviar');
+    } else {
+        $tags = array('Home', 'About us?', 'Development plan', 'Gallery', 'Products',
+            'Contact us', 'Mission', 'View', 'History', 'Comission', 'Read more',
+            'Close', 'All', 'I Stage', 'II Stage', 'Our products', 'See recipes',
+            'We are here to serve you', 'For any query please contact us, '
+            . 'we would like to hear from you and your opinions about APROASUR',
+            'Name', 'E-mail', 'Phone number (optional)', 'Message', 'Send');
+    }
+}
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -79,16 +110,25 @@
                 </div><!--Navbar header End-->
                 <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
                     <ul class="nav navbar-nav navbar-right ">
-                        <li class="active"> <a href="#home" class="page-scroll">Inicio </a></li>
-                        <li><a href="#service" class="page-scroll" >¿Quiénes somos?</a> </li>
-                        <li><a href="#portfolio"  class="page-scroll">Plan de desarrollo</a> </li>
-                        <li><a href="#team" class="page-scroll">Galería</a> </li>
-                        <li><a href="#blog" class="page-scroll">Productos</a> </li>
-                        <li><a href="#contact" class="page-scroll">Contáctenos</a> </li>
+                        <li class="active"> <a href="#home" class="page-scroll"><?php echo $tags[0]; ?></a></li>
+                        <li><a href="#service" class="page-scroll" ><?php echo $tags[1]; ?></a> </li>
+                        <li><a href="#portfolio"  class="page-scroll"><?php echo $tags[2]; ?></a> </li>
+                        <li><a href="#team" class="page-scroll"><?php echo $tags[3]; ?></a> </li>
+                        <li><a href="#blog" class="page-scroll"><?php echo $tags[4]; ?></a> </li>
+                        <li><a href="#contact" class="page-scroll"><?php echo $tags[5]; ?></a> </li>
+
+                        <?php
+                        if ($lang == 'es') {
+                            echo '<li><a href="./inicio.php?lang=en"><img src="../Images/en_flag.jpg"/></a></li>';
+                        } else {
+                            echo '<li><a href="./inicio.php?lang=es"><img src="../Images/es_flag.png"/></a></li>';
+                        }
+                        ?>
                     </ul>
                 </nav>
             </div><!-- /.container-fluid -->
         </header>
+
         <!-- Slider start -->
         <section id="home" class="hero landing hero-section">
 
@@ -147,34 +187,34 @@
                         <div class="col-md-3 col-xs-12 col-sm-6">
                             <div class="feature_content">
                                 <i class=" glyphicon glyphicon-flag"></i>
-                                <h5>Misión</h5>
+                                <h5><?php echo $tags[6]; ?></h5>
                                 <!--<p>You can not ignore mobile devices anymore and with this theme all your visitors will be very pleased how they see your website.</p>-->
                                 <p><?php echo substr($organization->mission, 0, 102) . '...'; ?> </p>
-                                <button onclick="<?php echo "modalSelect('" . substr($organization->mission, 0, 1100) . "','" . "Misión" . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">Leer más</button>
+                                <button onclick="<?php echo "modalSelect('" . substr($organization->mission, 0, 1100) . "','" . $tags[6] . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal"><?php echo $tags[10]; ?></button>
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12 col-sm-6">
                             <div class="feature_content">
                                 <i class="fa fa-eye"></i>
-                                <h5>Visión</h5>
+                                <h5><?php echo $tags[7]; ?></h5>
                                 <p><?php echo substr($organization->view, 0, 113) . '...'; ?></p>
-                                <button onclick="<?php echo "modalSelect('" . substr($organization->view, 0, 1100) . "','" . "Visión" . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">Leer más</button>
+                                <button onclick="<?php echo "modalSelect('" . substr($organization->view, 0, 1100) . "','" . $tags[7] . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal"><?php echo $tags[10]; ?></button>
                             </div>
                         </div> <!-- Col-md-4 Single_feature End -->
                         <div class="col-md-3 col-xs-12 col-sm-6">
                             <div class="feature_content">
                                 <i class="fa fa-history"></i>
-                                <h5>Historia</h5>
+                                <h5><?php echo $tags[8]; ?></h5>
                                 <p><?php echo substr($organization->history, 0, 95) . '...'; ?> </p>
-                                <button onclick="<?php echo "modalSelect('" . substr($organization->history, 0, 667) . "','" . "Historia" . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">Leer más</button>
+                                <button onclick="<?php echo "modalSelect('" . substr($organization->history, 0, 667) . "','" . $tags[8] . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal"><?php echo $tags[10]; ?></button>
                             </div>
                         </div> <!-- Col-md-4 Single_feature End -->
                         <div class="col-md-3 col-xs-12 col-sm-6">
                             <div class="feature_content">
                                 <i class="fa fa-users "></i>
-                                <h5>Comisión</h5>
+                                <h5><?php echo $tags[9]; ?></h5>
                                 <p><?php echo substr($organization->comission, 0, 90) . "..."; ?> </p>
-                                <button onclick="<?php echo "modalSelect('" . substr($organization->comission, 0, 800) . "','" . "Comisión" . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">Leer más</button>
+                                <button onclick="<?php echo "modalSelect('" . substr($organization->comission, 0, 800) . "','" . $tags[9] . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal"><?php echo $tags[10]; ?></button>
                             </div>
                         </div> <!-- Col-md-4 Single_feature End -->
                         <!-- <button class="btn btn-main"> Read More</button> -->
@@ -196,7 +236,7 @@
                         <p class="modal-message">#</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $tags[11]; ?></button>
                     </div>
                 </div>
             </div>
@@ -226,9 +266,9 @@
             </div>
 
             <div id="isotope-filter" class="skew3 text-center">
-                <a data-filter="*"  href="#" class=" ">Todos</a>
-                <a data-filter=".Ietapa"  href="#" class="">I Etapa</a>
-                <a data-filter=".IIetapa" href="#"  class="">II Etapa</a>               
+                <a data-filter="*"  href="#" class=" "><?php echo $tags[12]; ?></a>
+                <a data-filter=".Ietapa"  href="#" class=""><?php echo $tags[13]; ?></a>
+                <a data-filter=".IIetapa" href="#"  class=""><?php echo $tags[14]; ?></a>               
             </div>
             <div class="clearfix"></div>
             <div class="text-center ">
@@ -279,18 +319,13 @@
         <!-- Counter End -->
         <div class="clearfix"></div>
 
-        <!-- Team MEmber Start -->
-
         <!------------------------------ Galeria ------------------------------------>
         <section id="team">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="feature_header text-center">
-                            <h3 class="feature_title"> Galería <b> Aproasur</b></h3>
-                            <h4>
-                                Bienvenido a la sección de galería, disfruta de nuestra diversa selección de imágenes. 
-                            </h4>
+                            <h3 class="feature_title"> <?php echo $tags[3]; ?> <b> Aproasur</b></h3>
                             <!-- Boton para ventana modal -->
 
 
@@ -355,7 +390,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="feature_header text-center">
-                            <h3 class="feature_title">Nuestros Productos</h3>
+                            <h3 class="feature_title"><?php echo $tags[15]; ?></h3>
                             <h4 class="feature_sub"></h4>
                             <div class="divider"></div>
                         </div>
@@ -376,10 +411,10 @@
                                         </div>
                                         <center><h4>  <?php echo $currentProduct->name; ?> </h4></center>
                                         <p class="text-justify"> <?php echo substr($currentProduct->description, 0, 200) . "..."; ?> </p>
-                                        <center><button onclick="<?php echo "modalSelect('" . substr($currentProduct->description, 0, 667) . "','" . $currentProduct->name . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">Leer más</button></center>
-                                        <a href="<?php echo '../Presentation/ViewProductRecipes.php?productId=' . $currentProduct->idProduct; ?>">
-                                            <center><button type="button" class="btn btn-main">Ver recetas</button></center>
-                                        </a>
+                                        <center><button onclick="<?php echo "modalSelect('" . substr($currentProduct->description, 0, 667) . "','" . $currentProduct->name . "')"; ?>" type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal"><?php echo $tags[10]; ?></button></center>
+    <!--                                        <a href="<?php echo '../Presentation/ViewProductRecipes.php?productId=' . $currentProduct->idProduct; ?>">
+                                            <center><button type="button" class="btn btn-main"><?php echo $tags[16]; ?></button></center>
+                                        </a>-->
                                     </div>
                                 </div>
                                 <?php
@@ -399,9 +434,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="feature_header text-center">
-                            <h3 class="feature_title"><b>Estamos para servir</b></h3>
+                            <h3 class="feature_title"><b><?php echo $tags[17]; ?></b></h3>
                             <div class="text-center">
-                                <h4>Para cualquier consulta escríbenos, nos gustaría saber de tí y de tus opiniones sobre APROASUR</h4>
+                                <h4><?php echo $tags[18]; ?></h4>
                             </div>
                             <div class="divider"></div>
 
@@ -415,15 +450,15 @@
                                 <div class="left_contact">
 
                                     <div class="form-level">
-                                        <input name="name" placeholder="Ingrese su nombre completo" id="name"  value="" type="text" class="input-block">
+                                        <input name="name" placeholder="<?php echo $tags[19]; ?>" id="name"  value="" type="text" class="input-block">
                                         <span class="form-icon fa fa-user"></span>
                                     </div>
                                     <div class="form-level">
-                                        <input name="email" placeholder="Ingrese su correo electrónico" id="mail" class="input-block" value="" type="email">
+                                        <input name="email" placeholder="<?php echo $tags[20]; ?>" id="mail" class="input-block" value="" type="email">
                                         <span class="form-icon fa fa-envelope-o"></span>
                                     </div>
                                     <div class="form-level">
-                                        <input name="telephone" placeholder="Ingrese su número telefónico" id="phone" class="input-block" value="" type="text">
+                                        <input name="telephone" placeholder="<?php echo $tags[21]; ?>" id="phone" class="input-block" value="" type="text">
                                         <span class="form-icon fa fa-phone"></span>
                                     </div>
 
@@ -432,12 +467,12 @@
 
                             <div class="col-md-6 right">
                                 <div class="form-level">
-                                    <textarea name="comments" id="messege"  rows="5" class="textarea-block" placeholder="Ingrese su mensaje aquí"></textarea>
+                                    <textarea name="comments" id="messege"  rows="5" class="textarea-block" placeholder="<?php echo $tags[22]; ?>"></textarea>
                                     <span class="form-icon fa fa-pencil"></span>
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
-                                <input type="submit" value="Enviar" class="btn btn-main featured">
+                                <input type="submit" value="<?php echo $tags[23]; ?>" class="btn btn-main featured">
 
                             </div>
                         </form>
@@ -464,7 +499,7 @@
                             <div class="footer_bottom">
                                 <p class="text-block"> &copy;  <span>Copyright, 2016 APROASUR.com</span></p>
                                 <p class="text-block" >Tel: +(506) 60 02 30 52<br>
-                                                       Tel: +(506) 87 78 67 47
+                                    Tel: +(506) 87 78 67 47
                                 </p>
                             </div>
 
@@ -491,7 +526,6 @@
             </div>
         </section>
         <!-- Footer Area End -->
-
 
 
         <!-- Back To Top Button -->
@@ -543,6 +577,7 @@ function modalSelect(modalMessage, modalTitle) {
     document.getElementsByClassName("modal-message")[0].textContent = modalMessage;
 }
 ;
+
         </script>
 
         <script>
