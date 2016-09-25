@@ -55,7 +55,7 @@
         <?php
         $organizationBusiness = new OrganizationBusiness();
         $organization = $organizationBusiness->getOrganization();
-         
+
         $GB = new GalleryBusiness();
         $listImage = $GB->getAllImageBusiness();
         ?>
@@ -91,27 +91,45 @@
         </header>
         <!-- Slider start -->
         <section id="home" class="hero landing hero-section">
-            <div class="video-background-container">
-                <video preload="auto" autoplay loop muted class="video-background">
-                    <source type="video/mp4" src="../Style/videos/gdrive.mp4" />
-                    <source type="video/ogg" src="../Style/videos/gdrive.ogv" />
-                    <source type="video/webm" src="../Style/videos/gdrive.webm" />
-                </video>
-            </div> 
 
             <!--<div class="parallax-overlay"></div>-->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" style="border: 25px">
+                    <div class="item active" >
+                        <img src="../Style/images/APROASUR LOGO.png" style="width: 500px; height: 450px" class="img-responsive center-block">
+                        <h2></h2>
+                    </div>
 
-            <div class="container">
-                <div class="hero-content text-center">
-                    <div class="hero-text wow fadeIn" data-wow-delay=".8s ">
-                        <img src="../Style/images/APROASUR LOGO.png" style="width: 500px; height: 370px; " class="img-responsive center-block">
+                    <div class="item">
+                        <img src="../Style/images/img4.png" style="width: 500px; height: 450px " class="img-responsive center-block">
+                    </div>
 
-                    </div><!--/ Hero text end -->
-                </div><!--/ Hero content end -->
-            </div><!--/ Container end -->
+                    <div class="item">
+                        <img src="../Style/images/img2.png" style="width: 650px; height: 450px" class="img-responsive center-block">
+                    </div>
+
+                </div>
+
+                <!--                 Left and right controls -->
+
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <br/>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+
         </section><!--/ Home end -->
         <!-- ABOUT US -->
-        <section id="service" style="background-color: #fff3e0"">
+        <section id="service" style="background-color: #fff3e0">
             <div class="container" >
                 <div class="row">
                     <div class="col-md-12">
@@ -260,61 +278,7 @@
         <div class="clearfix"></div>
         <!-- Counter End -->
         <div class="clearfix"></div>
-        <section id="video-fact" style="background-color: #fff3e0" >
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="landing-video">
-                            <div class="video-embed wow fadeIn" data-wow-duration="1s">
-                                <!-- Change the url -->
-                                <iframe src="https://player.vimeo.com/video/183091597?title=0&amp;byline=0&amp;portrait=0&amp;color=8aba56" width="350" height="281" allowfullscreen></iframe>      
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="video-text">
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading p2 active" role="tab" id="headingOne" style="background-color: #ffa726">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Nuestros trabajadores
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body p3">
-                                            Son personas responsables y trabajadoras con deseos de salir adelante y dar siempre lo mejor de cada uno de ellos.
-                                            Es importante mencionar que se capacitan frecuentemente para así poder producir los mejores productos del país.
-                                            Se parte de nuestra asociación y de nuestra familia.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default ">
-                                    <div class="panel-heading  p2" role="tab" id="headingTwo" style="background-color: #ffa726">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Nuestros productos
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body p3">
-                                            Nuestros productos se caracterizan por su frescura, por su excelente calidad y por supuesto por su delicioso sabor.
-                                            Producimos: Pejibaye, Tapas Dulces, Platano, Hojas de Platano, y gran variedad de recetas.
-                                            Puedes ver la descripción de cada uno de ellos en la sección de Galería o de productos.
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div> 
-                </div><!-- row End -->
-            </div>
-        </section>
         <!-- Team MEmber Start -->
 
         <!------------------------------ Galeria ------------------------------------>
@@ -446,7 +410,7 @@
                 </div>
                 <div class="row">
                     <div class="contact_full">
-                        <form name="frmContacto" method="post" action="smtp.php">
+                        <form name="frmContacto" method="post" action="../smtp.php">
                             <div class="col-md-6 left">
                                 <div class="left_contact">
 
@@ -498,22 +462,30 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="footer_bottom">
-                                <p class="text-block"> &copy;  <span>Copyright reserved to APROASUR</span></p>
+                                <p class="text-block"> &copy;  <span>Copyright, 2016 APROASUR.com</span></p>
+                                <p class="text-block" >Tel: +(506) 60 02 30 52<br>
+                                                       Tel: +(506) 87 78 67 47
+                                </p>
                             </div>
+
                         </div>
                         <div class="col-md-6">
                             <div class="footer_mid pull-right">
                                 <ul class="social-contact list-inline">
-                                    <li> <a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li> Búscanos en: &nbsp;<a href="https://www.facebook.com/Aproasur-1669910829993271/?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a></li>
+<!--                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li> <a href="#"><i class="fa fa-rss"></i></a></li>
                                     <li> <a href="#"><i class="fa fa-google-plus"></i> </a></li>
                                     <li><a href="#"> <i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"> <i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"> <i class="fa fa-pinterest"></i></a></li>-->
                                 </ul>
                             </div>
+
                         </div>
 
+                    </div>
+                    <div class="text-center">
+                        <a href="Credits.php" target="_blank"><p>TCU 563<br>Universidad de Costa Rica<br>Sede del Atlántico</p></a>
                     </div>
                 </div>
             </div>
@@ -565,12 +537,12 @@
         <!-- Custom js -->
         <script src="../Style/js/custom.js"></script>
         <script>
-    //function to update the information modal.
-    function modalSelect(modalMessage, modalTitle) {
-        document.getElementsByClassName("modal-title")[0].textContent = modalTitle;
-        document.getElementsByClassName("modal-message")[0].textContent = modalMessage;
-    }
-    ;
+//function to update the information modal.
+function modalSelect(modalMessage, modalTitle) {
+    document.getElementsByClassName("modal-title")[0].textContent = modalTitle;
+    document.getElementsByClassName("modal-message")[0].textContent = modalMessage;
+}
+;
         </script>
 
         <script>

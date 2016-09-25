@@ -30,7 +30,7 @@ if (!$mail->send()) {
     
     require "messageSend.php"  ;
 
-  header("Refresh: 3; index.php");
+  header("Refresh: 3; Presentation/inicio.php");
 }
 }
 
